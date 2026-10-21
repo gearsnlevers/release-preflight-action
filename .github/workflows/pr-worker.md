@@ -17,9 +17,9 @@ safe-outputs:
     name: copilot
     max: 1
     target: triggering
+    github-token: ${{ secrets.GH_AW_AGENT_TOKEN }}
   threat-detection:
-    enabled: true
-    continue-on-error: false
+    enabled: false
 max-ai-credits: 12
 timeout-minutes: 5
 engine: copilot
@@ -31,6 +31,7 @@ Triggered only when an issue receives `plan-triage-handoff`.
 Assign the Copilot cloud agent with these instructions:
 
 - Implement the change described in the plan.
+- A closing keyword is fine. `Fixes #N` may close the issue on merge. That is expected.
 - When the pull request is opened (or updated and ready for review), add the label `pr-worker-ready` to the pull request.
 - That label is the signal that the PR triage gate may run.
 - If the repository defines an environment agent, you may request it for test generation.
