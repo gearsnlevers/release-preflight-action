@@ -125,7 +125,7 @@ jobs:
 
       - name: Publish GitHub release
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
           RELEASE_TAG: ${{ steps.version.outputs.newTag }}
           IS_PRERELEASE: ${{ steps.version.outputs.preRelease }}
         run: |
