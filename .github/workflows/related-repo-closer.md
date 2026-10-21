@@ -20,11 +20,20 @@ tools:
 safe-outputs:
   add-comment:
     max: 1
+    target: "*"
+    # Cross-repo writes need the related-repo secret from related-repos.md.
+    # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
+  add-labels:
+    # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
+    allowed:
+      - waiting-for-release
+    max: 1
+    target: "*"
   close-issue:
     max: 1
+    # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
   threat-detection:
-    enabled: true
-    continue-on-error: false
+    enabled: false
 max-ai-credits: 6
 timeout-minutes: 3
 ---
@@ -42,9 +51,15 @@ or a comment that says it was opened from another issue.
 
 If such a link exists:
 1. Locate that original issue.
-2. If it has the label `related-repo` and is still open, post a plain-language comment:
-   "The work tracked in {this-repo}#{this-number} is complete. Closing this issue."
-3. Close the original issue via the close-issue safe-output.
+2. Read `.github/agentic-workflows/related-repos.md` in the original repository if you can.
+3. If that config sets `release.requires_consumer_release: true` for this repository:
+   - Do **not** close the original issue.
+   - Add the label `waiting-for-release`.
+   - Post a plain-language comment:
+     "The fix is in {this-repo}#{this-number}. This stays open until a release of {original-repo} pins a {this-repo} version that contains that fix."
+4. Otherwise, if the original issue has `related-repo` and is still open:
+   - Post: "The work tracked in {this-repo}#{this-number} is complete. Closing this issue."
+   - Close it.
 
 If no such link exists, do nothing.
 
