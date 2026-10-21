@@ -38,6 +38,7 @@ safe-outputs:
     max: 2
     target: "*"
   add-labels:
+    github-token: ${{ secrets.SIGNAL_TOKEN }}
     allowed:
       - issue-worker-ready
       - related-repo
@@ -77,11 +78,17 @@ If `.github/agentic-workflows/related-repos.md` exists, read it.
 
 When the current issue clearly belongs in a related repository (per the `when` text):
 
+The `secret` field on that entry names the Actions secret the workflow uses to create the issue. You do not use the secret. You only create the issue in the related repository.
+
 1. Create a new issue in that related repository (the canonical issue) via the create-issue safe-output.
    - Title: same as the original, or a clear summary.
    - Body: include the original report and a line `Reported from {owner}/{repo}#{number}`.
 2. On the original (non-canonical) issue:
-   - Post a plain-language comment: "This is being tracked in {owner}/{repo}#{number}. We will update this issue when that work is finished."
+   - Post a plain-language comment.
+     If the related entry has `release.requires_consumer_release: true`:
+     "This is being tracked in {owner}/{repo}#{number}. A release of this project that includes that fix will be needed before this is resolved."
+     Otherwise:
+     "This is being tracked in {owner}/{repo}#{number}. We will update this issue when that work is finished."
    - Add the internal label `related-repo`.
    - Do **not** add `issue-worker-ready`.
 3. On the new canonical issue, post a short comment: "Opened from {owner}/{repo}#{number}."
@@ -99,14 +106,28 @@ Post a short, plain-language comment. Do not mention labels, gates, workflows, o
 Cover, in ordinary language:
 - Whether the report is clear enough to act on
 - Apparent duplicates
-- Age and recent activity if relevant
+- Whether the reported behavior is already fixed, or cannot be found in the current code
+
+### Already fixed or cannot reproduce
+Use the issue's creation date as the line.
+
+1. From the report, name the files or subsystem that would have to change.
+2. Look at commits and merged pull requests that touch those files after the issue was opened.
+3. Read the current code for the reported behavior.
+
+Then say one of these, plainly:
+
+- Already fixed: a change after the issue date addresses the reported behavior. Name the pull request or commit. This is not a guess. If you cannot point at that later change, do not call it fixed.
+- Cannot reproduce: the current code does not show the reported behavior, and nothing relevant changed after the issue was opened. Do not call this fixed.
+- Still present: the current code still matches the report. Continue as usual.
+
+Do not use age or inactivity as a reason to call an issue fixed.
 
 ### Missing information
 If required details are absent and the issue belongs here, end with a direct request that lists only the items still needed.
 
-### Not actionable or not urgent
-- If the issue looks stale or no longer relevant, say so plainly and note that it may be closed.
-- If it is valid but not urgent, say that it has been noted for later and that no immediate work is planned.
+### Not urgent
+If it is valid but not urgent, say that it has been noted for later and that no immediate work is planned.
 
 If the repository defines an environment agent and a quick reproduction check would help, you may request it. Otherwise proceed without it.
 
