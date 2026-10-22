@@ -2,6 +2,7 @@
 description: |
   When a canonical issue is closed, close the linked non-canonical issue
   that carries the related-repo label.
+if: ${{ github.event.issue.user.type != 'Bot' }}
 on:
   issues:
     types: [closed]
@@ -21,10 +22,14 @@ safe-outputs:
   add-comment:
     max: 1
     target: "*"
-    # Cross-repo writes need the related-repo secret from related-repos.md.
+    # Cross-repo writes need both the related-repo secret from related-repos.md
+    # and an allowlist of the repositories they may target; without allowed-repos
+    # the safe output only acts in this repository.
     # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
+    # allowed-repos: ["owner/related-repo"]
   add-labels:
     # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
+    # allowed-repos: ["owner/related-repo"]
     allowed:
       - waiting-for-release
     max: 1
@@ -32,6 +37,7 @@ safe-outputs:
   close-issue:
     max: 1
     # github-token: ${{ secrets.OTHER_REPO_ISSUES_TOKEN }}
+    # allowed-repos: ["owner/related-repo"]
   threat-detection:
     enabled: false
 max-ai-credits: 6
