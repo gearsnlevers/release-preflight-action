@@ -47,8 +47,6 @@ safe-outputs:
     target: "*"
   create-issue:
     max: 1
-    # Repos that use related-repos.md must list the related repositories here,
-    # for example: allowed-repos: ["owner/library"]
   threat-detection:
     enabled: true
     continue-on-error: false
