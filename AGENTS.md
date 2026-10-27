@@ -1,6 +1,6 @@
 # release-preflight-action: instructions for coding agents
 
-Validates a candidate release version and tag against git and npm before publishing, and nothing else. It is a composite GitHub Action that release workflows use at its moving major tag (`vscheuber/release-preflight-action@v1`). It is one of five small actions that release each other: version-bump-action, release-preflight-action, manifest-version-update-action, ai-changelog-action and npm-trusted-publish-action; each does one job and points to the others for the rest. Read [README.md](README.md) and `.github/agentic-workflows/scope.md` (what is in and out of scope) first.
+Validates a candidate release version and tag against git and npm before publishing, and nothing else. It is a composite GitHub Action that release workflows use at its moving major tag (`gearsnlevers/release-preflight-action@v1`). It is one of five small actions that release each other: version-bump-action, release-preflight-action, manifest-version-update-action, ai-changelog-action and npm-trusted-publish-action; each does one job and points to the others for the rest. Read [README.md](README.md) and `.github/agentic-workflows/scope.md` (what is in and out of scope) first.
 
 ## Layout
 

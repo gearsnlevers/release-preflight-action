@@ -38,7 +38,7 @@ This action does not compute versions, update manifests, publish to npm, or crea
 ```yaml
 - name: Release preflight checks
   id: preflight
-  uses: vscheuber/release-preflight-action@v1
+  uses: gearsnlevers/release-preflight-action@v1
   with:
     candidate-version: ${{ steps.version-bump.outputs.newVersion }}
     candidate-tag: ${{ steps.version-bump.outputs.newTag }}

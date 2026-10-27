@@ -40,7 +40,7 @@ jobs:
 
       - name: Compute next version
         id: version
-        uses: vscheuber/version-bump-action@v1
+        uses: gearsnlevers/version-bump-action@v1
         with:
           release-type: ${{ inputs.release-type }}
 
@@ -56,13 +56,13 @@ jobs:
           check-version-drift: true
 
       - name: Update package manifests
-        uses: vscheuber/manifest-version-update-action@v1
+        uses: gearsnlevers/manifest-version-update-action@v1
         with:
           version: ${{ steps.version.outputs.newVersion }}
 
       - name: Update changelog using AI action
         id: changelog
-        uses: vscheuber/ai-changelog-action@v1
+        uses: gearsnlevers/ai-changelog-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           llm-api-key: ${{ secrets.LLM_API_KEY }}
