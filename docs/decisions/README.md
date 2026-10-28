@@ -2,7 +2,7 @@
 
 A decision record explains one lasting decision: why we chose it, what it means and what we gave up. Records are plain Markdown in the repository, so every contributor and every coding agent, whatever tool it uses, reads the same thing.
 
-This folder holds the decisions that concern **release-preflight-action**: what the action does and does not do, how it behaves, and how it is released. It is one of five small actions that release each other (version-bump-action, release-preflight-action, manifest-version-update-action, ai-changelog-action and npm-trusted-publish-action). Decisions about the Repo Concierge that runs this repository's gates are recorded in the [repo-concierge](https://github.com/vscheuber/repo-concierge/tree/main/docs/decisions) repository.
+This folder holds the decisions that concern **release-preflight-action**: what the action does and does not do, how it behaves, and how it is released. It is one of five small actions that release each other (version-bump-action, release-preflight-action, manifest-version-update-action, ai-changelog-action and npm-trusted-publish-action). Decisions about the Repo Concierge that runs this repository's gates are recorded in the [issue-concierge](https://github.com/gearsnlevers/issue-concierge/tree/main/docs/decisions) repository.
 
 ## Rules
 
