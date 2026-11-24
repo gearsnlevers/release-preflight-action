@@ -6,6 +6,7 @@ decision-makers:
 applies-to:
   - scripts/preflight.sh
   - README.md
+seal: sha256-g1:37c9a4e41a7e89001304b12205fc5c76a133f3f20fdd0bd332070070854d0c0d
 ---
 
 # A stable base is compared only with stable releases
