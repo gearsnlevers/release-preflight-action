@@ -17,7 +17,7 @@ This folder holds the decisions that concern **release-preflight-action**: what 
 
 ## Writing one
 
-Copy `template.md` to `NNNN-short-title.md` (the next number, starting at 0001), fill it in (aim for under 40 lines) and add a row to the index. Besides the three required sections, a record may have `## Known deviations` and `## Alternatives considered`. `node .github/scripts/validate-decision-records.mjs docs/decisions` checks this folder; CI runs the same check.
+Copy `template.md` to `NNNN-short-title.md` (the next number, starting at 0001), fill it in (aim for under 40 lines) and add a row to the index. Besides the three required sections, a record may have `## Known deviations` and `## Alternatives considered`. `node .github/record-keeper/record-keeper.mjs validate` checks this folder; the check `Records integrity` judges every pull request that changes it.
 
 ## Index
 
