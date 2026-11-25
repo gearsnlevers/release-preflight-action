@@ -2,3 +2,7 @@
 {"at":"2026-11-24T20:05:20Z","event":"opened","key":"0002:P-06","violations":[{"commit":"da455b92055f343c06a31d2829256ed6698729c4","kind":"state","file":"0002-collisions-are-checked-by-default-and-drift-only-on-request.md","rule":"P-06","detail":"no seal"}]}
 {"at":"2026-11-24T20:05:20Z","event":"opened","key":"0003:P-06","violations":[{"commit":"da455b92055f343c06a31d2829256ed6698729c4","kind":"state","file":"0003-a-stable-base-is-compared-only-with-stable-releases.md","rule":"P-06","detail":"no seal"}]}
 {"at":"2026-11-24T20:05:20Z","event":"opened","key":"0004:P-06","violations":[{"commit":"da455b92055f343c06a31d2829256ed6698729c4","kind":"state","file":"0004-releases-run-through-one-dispatched-workflow-that-uses-the-sibling-actions.md","rule":"P-06","detail":"no seal"}]}
+{"at":"2026-11-25T01:59:20Z","event":"closed","key":"0001:P-06","violations":[]}
+{"at":"2026-11-25T01:59:20Z","event":"closed","key":"0002:P-06","violations":[]}
+{"at":"2026-11-25T01:59:20Z","event":"closed","key":"0003:P-06","violations":[]}
+{"at":"2026-11-25T01:59:20Z","event":"closed","key":"0004:P-06","violations":[]}
