@@ -7,6 +7,7 @@ applies-to:
   - action.yml
   - scripts/preflight.sh
   - README.md
+seal: sha256-g1:121ffb98bdbee20dc159ec0877b52b1991f7bc39a14340a64d64fb4db7f9504e
 ---
 
 # The action validates a candidate release and changes nothing

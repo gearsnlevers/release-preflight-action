@@ -6,6 +6,7 @@ decision-makers:
 applies-to:
   - action.yml
   - README.md
+seal: sha256-g1:0623ddebdff1e0f57458c74dbda0673dd007ea9c710a0eb033e4c377c0d287b5
 ---
 
 # Collisions are checked by default and drift only on request
